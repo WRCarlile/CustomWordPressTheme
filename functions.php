@@ -1,46 +1,55 @@
 <?php
 /**
-*functions.php
-*
-* The theme's functions and definitions
-*/
-/**
-*
-* 1.0 Define constants
-*
-*/
-
-define( 'THEMEROOT', get_stylesheet_directory_uri() ) ;
-define( 'IMAGES', THEMEROOT . '/images');
-define( 'SCRIPTS', THEMEROOT . '/js');
-define ( 'FRAMEWORK', get_template_directory() . '/framework');
+ * functions.php
+ *
+ * The theme's functions and definitions.
+ */
 
 /**
-*
-* 2.0 - Load Framework
-*
-*/
-require_once (FRAMEWORK . '/init.php');
-/**
-*
-* 3.0 - Set up the content width value based on the theme's design
-*
-*/
+ * ----------------------------------------------------------------------------------------
+ * 1.0 - Define constants.
+ * ----------------------------------------------------------------------------------------
+ */
+define( 'THEMEROOT', get_stylesheet_directory_uri() );
+define( 'IMAGES', THEMEROOT . '/images' );
+define( 'SCRIPTS', THEMEROOT . '/js' );
+define( 'FRAMEWORK', get_template_directory() . '/framework' );
 
-if (! isset ( $content_width)) {
+
+/**
+ * ----------------------------------------------------------------------------------------
+ * 2.0 - Load the framework.
+ * ----------------------------------------------------------------------------------------
+ */
+require_once( FRAMEWORK . '/init.php' );
+
+
+/**
+ * ----------------------------------------------------------------------------------------
+ * 3.0 - Set up the content width value based on the theme's design.
+ * ----------------------------------------------------------------------------------------
+ */
+if ( ! isset( $content_width ) ) {
 	$content_width = 800;
 }
 
-/**
-*
-* 4.0 - Set up theme default and register various supported features
-*
-*/
 
-if ( ! function_exists('alpha_setup')) {
+/**
+ * ----------------------------------------------------------------------------------------
+ * 4.0 - Set up theme default and register various supported features.
+ * ----------------------------------------------------------------------------------------
+ */
+if ( ! function_exists( 'alpha_setup' ) ) {
 	function alpha_setup() {
+		/**
+		 * Make the theme available for translation.
+		 */
 		$lang_dir = THEMEROOT . '/languages';
-		load_theme_textdomain('alpha', $lang_dir);
+		load_theme_textdomain( 'alpha', $lang_dir );
+
+		/**
+		 * Add support for post formats.
+		 */
 		add_theme_support( 'post-formats',
 			array(
 				'gallery',
@@ -52,16 +61,27 @@ if ( ! function_exists('alpha_setup')) {
 			)
 		);
 
-		add_theme_support ('automatic-feed-links');
+		/**
+		 * Add support for automatic feed links.
+		 */
+		add_theme_support( 'automatic-feed-links' );
 
-		add_theme_support('post-thumbnails');
+		/**
+		 * Add support for post thumbnails.
+		 */
+		add_theme_support( 'post-thumbnails' );
 
-		register_nav_menus (
-				array(
-					'main-menu' => __('Main Menu', 'alpha')
-				)
-			);
+		/**
+		 * Register nav menus.
+		 */
+		register_nav_menus(
+			array(
+				'main-menu' => __( 'Main Menu', 'alpha' )
+			)
+		);
 	}
-	add_action('after_theme_setup', 'alpha_setup');
+
+	add_action( 'after_setup_theme', 'alpha_setup' );
 }
+
  ?>

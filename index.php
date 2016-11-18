@@ -5,8 +5,13 @@
 * The main template file.
 */
  ?>
+<div class="main-content col-md-8" role='main'>
+		<?php if ( have_posts()) : while( have_posts() ) : the_post(); ?>
 
-<?php if ( have_posts()) : while( have_posts() ) : the_post(); ?>
-hello
-<?php endwhile;  ?>
-<?php endif; ?>
+		<?php endwhile;  ?>
+
+		<?php else : ?>
+				<?php get_template_part('content', 'none'); ?>
+		<?php endif; ?>
+
+</div> <!-- end main-content -->
