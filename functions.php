@@ -10,7 +10,7 @@
 *
 */
 
-define( 'THEMEROOT', get_style_directory_uri());
+define( 'THEMEROOT', get_stylesheet_directory_uri() ) ;
 define( 'IMAGES', THEMEROOT . '/images');
 define( 'SCRIPTS', THEMEROOT . '/js');
 define ( 'FRAMEWORK', get_template_directory() . '/framework');
@@ -27,7 +27,7 @@ require_once (FRAMEWORK . '/init.php');
 *
 */
 
-if (! isset ( $content_with)) {
+if (! isset ( $content_width)) {
 	$content_width = 800;
 }
 
@@ -61,8 +61,6 @@ if ( ! function_exists('alpha_setup')) {
 					'main-menu' => __('Main Menu', 'alpha')
 				)
 			);
-
-		)
 	}
 	add_action('after_theme_setup', 'alpha_setup');
 }
