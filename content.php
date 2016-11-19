@@ -22,5 +22,10 @@
 		<?php else : ?>
 			<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 		<?php endif; ?>
+
+		<p class="entry-meta">
+			<?php alpha_post_meta();
+			 ?>
+		</p>
  		</header>
  </article>
