@@ -24,8 +24,34 @@
 		<?php endif; ?>
 
 		<p class="entry-meta">
-			<?php alpha_post_meta();
-			 ?>
+			<?php
+				// Display the meta information
+				alpha_post_meta();
+			?>
 		</p>
- 		</header>
- </article>
+	</header> <!-- end entry-header -->
+
+	<!-- Article content -->
+	<div class="entry-content">
+		<?php
+			if ( is_search() ) {
+				the_excerpt();
+			} else {
+				the_content( __( 'Continue reading &rarr;', 'alpha' ) );
+
+				wp_link_pages();
+			}
+		?>
+	</div> <!-- end entry-content -->
+
+	<!-- Article footer -->
+	<footer class="entry-footer">
+		<?php
+			// If we have a single page and the author bio exists, display it
+			if ( is_single() && get_the_author_meta( 'description' ) ) {
+				echo '<h2>' . __( 'Written by ', 'alpha' ) . get_the_author() . '</h2>';
+				echo '<p>' . the_author_meta( 'description' ) . '</p>';
+			}
+		?>
+	</footer> <!-- end entry-footer -->
+</article>
